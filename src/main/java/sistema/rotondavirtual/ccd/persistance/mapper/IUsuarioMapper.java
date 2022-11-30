@@ -1,10 +1,10 @@
-package persistance.mapper;
+package sistema.rotondavirtual.ccd.persistance.mapper;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import persistance.entity.Usuario;
+import sistema.rotondavirtual.ccd.persistance.entity.Usuario;
 
 public interface IUsuarioMapper {
 

@@ -1,4 +1,4 @@
-package controller;
+package sistema.rotondavirtual.ccd.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import persistance.entity.Usuario;
-import service.UsuarioService;
+import sistema.rotondavirtual.ccd.persistance.entity.Usuario;
+import sistema.rotondavirtual.ccd.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
@@ -24,6 +24,7 @@ public class UsuarioController {
 
 	private UsuarioService usuarioService;
 
+	@Autowired
 	public UsuarioController(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
 	}

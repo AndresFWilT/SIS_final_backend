@@ -1,4 +1,4 @@
-package persistance.entity;
+package sistema.rotondavirtual.ccd.persistance.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -25,10 +25,10 @@ public class Pedido implements Serializable{
 	@JoinColumn(name="id_usuario",nullable=false)
 	private Usuario id_usuario_ped_fk;
 	
-	@OneToOne(mappedBy="pedido")
+	@OneToOne(mappedBy="id_pedido_fac_fk")
 	private Factura factura;
 	
-	@OneToMany(mappedBy="pedido")
+	@OneToMany(mappedBy="id_pedido_producto_pk")
 	private Set<Producto_pedido> producto_pedidos;
 	
 	@Id

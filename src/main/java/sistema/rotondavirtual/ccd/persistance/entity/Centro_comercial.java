@@ -1,4 +1,4 @@
-package persistance.entity;
+package sistema.rotondavirtual.ccd.persistance.entity;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -16,12 +16,12 @@ public class Centro_comercial implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="centro_comercial")
-	private Set<Restaurante> restaurantes;
-	
 	@Id
 	@Column(length=5)
 	private String id_comercial;
+	
+	@OneToMany(mappedBy="id_comercial_res_fk")
+	private Set<Restaurante> restaurantes;
 	
 	@Column(length = 2, nullable = false)
 	private String estado_comercial;

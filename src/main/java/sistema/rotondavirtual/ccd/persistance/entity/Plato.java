@@ -1,4 +1,4 @@
-package persistance.entity;
+package sistema.rotondavirtual.ccd.persistance.entity;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -15,7 +15,7 @@ public class Plato implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="plato")
+	@OneToMany(mappedBy="id_plato_prod_fk")
 	private Set<Producto> productos;
 	
 	@Id

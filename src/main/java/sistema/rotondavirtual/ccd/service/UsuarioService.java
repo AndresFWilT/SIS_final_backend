@@ -1,12 +1,14 @@
-package service;
+package sistema.rotondavirtual.ccd.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import persistance.entity.Usuario;
-import persistance.repository.UsuarioRepository;
+import sistema.rotondavirtual.ccd.persistance.entity.Usuario;
+import sistema.rotondavirtual.ccd.persistance.repository.UsuarioRepository;
 
+@Service
 public class UsuarioService {
 
 	// Retorna el objeto

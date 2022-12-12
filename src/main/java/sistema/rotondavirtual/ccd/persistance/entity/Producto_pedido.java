@@ -9,35 +9,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCTO_PEDIDOS")
+@Table(name = "PRODUCTO_PEDIDO")
 public class Producto_pedido implements Serializable{
 
 private static final long serialVersionUID = 1L;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="id_producto", nullable=false)
-	private Producto id_producto_pedido_pk;
+	@JoinColumn(name="id_producto_pedido_pk", nullable=false)
+	private Producto producto;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="id_pedido", nullable=false)
-	private Pedido id_pedido_producto_pk;
+	@JoinColumn(name="id_pedido_producto_pk", nullable=false)
+	private Pedido pedido;
 
-	public Producto getId_producto_pedido_pk() {
-		return id_producto_pedido_pk;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setId_producto_pedido_pk(Producto id_producto_pedido_pk) {
-		this.id_producto_pedido_pk = id_producto_pedido_pk;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public Pedido getId_pedido_producto_pk() {
-		return id_pedido_producto_pk;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
-	public void setId_pedido_producto_pk(Pedido id_pedido_producto_pk) {
-		this.id_pedido_producto_pk = id_pedido_producto_pk;
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 	
 }

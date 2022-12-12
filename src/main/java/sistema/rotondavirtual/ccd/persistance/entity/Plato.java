@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,12 +17,14 @@ public class Plato implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="id_plato_prod_fk")
-	private Set<Producto> productos;
-	
 	@Id
 	@Column(length=10)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_plato;
+	
+	@OneToMany(mappedBy="plato")
+	private Set<Producto> productos;
+	
 	
 	@Column(length = 50, nullable = false)
 	private String descripcion_plato;

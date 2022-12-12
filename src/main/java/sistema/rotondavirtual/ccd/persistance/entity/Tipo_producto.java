@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,12 +17,13 @@ public class Tipo_producto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="id_tipo_producto_prod_fk")
-	private Set<Producto> productos;
-	
 	@Id
 	@Column(length=10)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_tipo_producto;
+	
+	@OneToMany(mappedBy="tipo_producto")
+	private Set<Producto> productos;
 	
 	@Column(length = 50, nullable = false)
 	private String descripcion_tipo_prod;

@@ -20,12 +20,12 @@ public class Factura implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	@JoinColumn(name="id_usuario",nullable=false)
-	private Usuario id_usuario_fac_fk;
+	@JoinColumn(name="id_usuario_fac_fk", nullable=false)
+	private Usuario usuario;
 	
 	@OneToOne
-	@JoinColumn(name="id_pedido",nullable=false)
-	private Pedido id_pedido_fac_fk;
+	@JoinColumn(name="id_pedido_fac_fk", nullable=false)
+	private Pedido pedido;
 	
 	@Id
 	@Column(length = 10)
@@ -38,20 +38,24 @@ public class Factura implements Serializable{
 	@Column(length = 1024, nullable = false)
 	private String total_factura;
 
-	public Usuario getId_usuario_fac_fk() {
-		return id_usuario_fac_fk;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setId_usuario_fac_fk(Usuario id_usuario_fac_fk) {
-		this.id_usuario_fac_fk = id_usuario_fac_fk;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public Pedido getId_pedido_fac_fk() {
-		return id_pedido_fac_fk;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public void setId_pedido_fac_fk(Pedido id_pedido_fac_fk) {
-		this.id_pedido_fac_fk = id_pedido_fac_fk;
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	public String getId_factura() {

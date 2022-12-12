@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,19 +23,20 @@ public class Pedido implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
-	@JoinColumn(name="id_usuario",nullable=false)
-	private Usuario id_usuario_ped_fk;
-	
-	@OneToOne(mappedBy="id_pedido_fac_fk")
-	private Factura factura;
-	
-	@OneToMany(mappedBy="id_pedido_producto_pk")
-	private Set<Producto_pedido> producto_pedidos;
-	
 	@Id
 	@Column(length = 10)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_pedido;
+	
+	@ManyToOne
+	@JoinColumn(name="id_usuario_ped_fk",nullable=false)
+	private Usuario usuario;
+	
+	@OneToOne(mappedBy="pedido")
+	private Factura factura;
+	
+	@OneToMany(mappedBy="pedido")
+	private Set<Producto_pedido> producto_pedidos;
 	
 	@Column(length = 2, nullable = false)
 	private String estado_pedido;
@@ -50,12 +53,16 @@ public class Pedido implements Serializable{
 	@DateTimeFormat(style="S-")
 	private Date fecha_pedido;
 
-	public Usuario getId_usuario_ped_fk() {
-		return id_usuario_ped_fk;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setId_usuario_ped_fk(Usuario id_usuario_ped_fk) {
-		this.id_usuario_ped_fk = id_usuario_ped_fk;
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Factura getFactura() {

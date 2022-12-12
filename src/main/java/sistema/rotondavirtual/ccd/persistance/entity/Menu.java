@@ -17,29 +17,32 @@ public class Menu implements Serializable{
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="id_producto", nullable=false)
-	private Producto id_producto_menu_pk;
+	@JoinColumn(name="id_producto_menu_pk", nullable=false)
+	private Producto producto;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="id_restaurante", nullable=false)
-	private Restaurante id_restaurante_menu_pk;
+	@JoinColumn(name="id_restaurante_menu_pk", nullable=false)
+	private Restaurante restaurante;
 
-	public Producto getId_producto_menu_pk() {
-		return id_producto_menu_pk;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setId_producto_menu_pk(Producto id_producto_menu_pk) {
-		this.id_producto_menu_pk = id_producto_menu_pk;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
-	public Restaurante getId_restaurante_menu_pk() {
-		return id_restaurante_menu_pk;
+	public Restaurante getRestaurante() {
+		return restaurante;
 	}
 
-	public void setId_restaurante_menu_pk(Restaurante id_restaurante_menu_pk) {
-		this.id_restaurante_menu_pk = id_restaurante_menu_pk;
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
 	}
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

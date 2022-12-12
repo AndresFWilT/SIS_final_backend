@@ -22,10 +22,10 @@ public class UsuarioRepository implements IUsuarioMapper {
 	}
 
 	@Override
-	public List<Usuario> validarUsuario(String correo_usuario) {
-		return jdbcTemplate
-				.query("SELECT u.correo_usuario, u.contrasena_usuario FROM USUARIO u WHERE u.correo_usuario = '"
-						+ correo_usuario + "'", BeanPropertyRowMapper.newInstance(Usuario.class));
+	public List<Usuario> encontrarUsuario(String id_usuario) {
+		return jdbcTemplate.query(
+				"SELECT * FROM USUARIO u WHERE u.id_usuario = '" + id_usuario + "'",
+				BeanPropertyRowMapper.newInstance(Usuario.class));
 	}
 
 	public List<Usuario> listarUsuarios() {

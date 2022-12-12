@@ -21,11 +21,11 @@ public class UsuarioService {
 		this.usuarioRepository = usuarioRepository;
 	}
 
-	public Object encontrarPorCorreo(Usuario usuario) {
-		if (usuarioRepository.validarUsuario(usuario.getCorreo_usuario()).isEmpty()) {
-			if (usuarioRepository.validarUsuario(usuario.getCorreo_usuario()).get(1)
-					.equals(usuario.getContrasena_usuario())) {
-				return usuarioRepository.validarUsuario(usuario.getCorreo_usuario());
+	public List<Usuario> validarUsuario(Usuario usuario) {
+		List<Usuario> usuarioEncontrado = usuarioRepository.encontrarUsuario(usuario.getId_usuario());
+		if (!usuarioEncontrado.isEmpty()) {
+			if (usuarioEncontrado.get(0).getContrasena_usuario().equals(usuario.getContrasena_usuario())) {
+				return usuarioEncontrado;
 			}
 		}
 		return null;

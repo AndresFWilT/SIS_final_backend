@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,17 +19,17 @@ public class Restaurante implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	
-	@JoinColumn(name="id_comercial", referencedColumnName = "id_comercial",nullable=false)
-	@ManyToOne
-	private Centro_comercial id_comercial_res_fk;
-	
-	@OneToMany(mappedBy="id_restaurante_menu_pk")
-	private Set<Menu> menus;
-	
 	@Id
 	@Column(length=5)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_restaurante;
+	
+	@ManyToOne
+	@JoinColumn(name="id_comercial_res_fk",nullable=false)
+	private Centro_comercial centro_comercial;
+	
+	@OneToMany(mappedBy="restaurante")
+	private Set<Menu> menus;
 	
 	@Column(length = 40, nullable = false)
 	private String nombre_restaurante;
@@ -38,20 +40,16 @@ public class Restaurante implements Serializable{
 	@Column(length = 2, nullable = false)
 	private String estado_restaurante;
 
-	public Centro_comercial getCc() {
-		return id_comercial_res_fk;
+	public Centro_comercial getCentro_comercial() {
+		return centro_comercial;
 	}
 
-	public void setCc(Centro_comercial id_comercial_res_fk) {
-		this.id_comercial_res_fk = id_comercial_res_fk;
+	public void setCentro_comercial(Centro_comercial centro_comercial) {
+		this.centro_comercial = centro_comercial;
 	}
 
-	public Centro_comercial getId_comercial_res_fk() {
-		return id_comercial_res_fk;
-	}
-
-	public void setId_comercial_res_fk(Centro_comercial id_comercial_res_fk) {
-		this.id_comercial_res_fk = id_comercial_res_fk;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public Set<Menu> getMenus() {

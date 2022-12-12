@@ -15,10 +15,10 @@ public class Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="id_usuario_ped_fk")
+	@OneToMany(mappedBy="usuario")
 	private Set<Pedido> pedidos;
 	
-	@OneToMany(mappedBy="id_usuario_fac_fk")
+	@OneToMany(mappedBy="usuario")
 	private Set<Factura> facturas;
 	
 	@Id

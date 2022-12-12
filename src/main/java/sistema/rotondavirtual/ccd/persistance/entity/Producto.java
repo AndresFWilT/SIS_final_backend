@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,26 +23,27 @@ public class Producto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
-	@JoinColumn(name="id_tipo_producto", nullable=false)
-	private Tipo_producto id_tipo_producto_prod_fk;
-	
-	@ManyToOne
-	@JoinColumn(name="id_plato", nullable=false)
-	private Centro_comercial id_plato_prod_fk;
-	
-	@OneToMany(mappedBy="id_producto_pedido_pk")
-	private Set<Producto_pedido> producto_pedidos;
-	
-	@OneToMany(mappedBy="id_producto_menu_pk")
-	private Set<Menu> menus;
-	
-	@OneToOne(mappedBy="id_producto_stock_fk")
-	private Stock stock;
-	
 	@Id
 	@Column(length=10)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_producto;
+	
+	@ManyToOne
+	@JoinColumn(name="id_tipo_producto_prod_fk", nullable=false)
+	private Tipo_producto tipo_producto;
+	
+	@ManyToOne
+	@JoinColumn(name="id_plato_prod_fk", nullable=false)
+	private Plato plato;
+	
+	@OneToMany(mappedBy="producto")
+	private Set<Producto_pedido> producto_pedidos;
+	
+	@OneToMany(mappedBy="producto")
+	private Set<Menu> menus;
+	
+	@OneToOne(mappedBy="producto")
+	private Stock stock;
 	
 	@Column(length = 50, nullable = false)
 	private String nombre_producto;
@@ -51,23 +54,27 @@ public class Producto implements Serializable{
 	
 	@Column(nullable = false)
 	private int costo_producto;
-
-	public Tipo_producto getId_tipo_producto_prod_fk() {
-		return id_tipo_producto_prod_fk;
-	}
-
-	public void setId_tipo_producto_prod_fk(Tipo_producto id_tipo_producto_prod_fk) {
-		this.id_tipo_producto_prod_fk = id_tipo_producto_prod_fk;
-	}
-
-	public Centro_comercial getId_plato_prod_fk() {
-		return id_plato_prod_fk;
-	}
-
-	public void setId_plato_prod_fk(Centro_comercial id_plato_prod_fk) {
-		this.id_plato_prod_fk = id_plato_prod_fk;
-	}
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Tipo_producto getTipo_producto() {
+		return tipo_producto;
+	}
+
+	public void setTipo_producto(Tipo_producto tipo_producto) {
+		this.tipo_producto = tipo_producto;
+	}
+
+	public Plato getPlato() {
+		return plato;
+	}
+
+	public void setPlato(Plato plato) {
+		this.plato = plato;
+	}
+
 	public Set<Producto_pedido> getProducto_pedidos() {
 		return producto_pedidos;
 	}

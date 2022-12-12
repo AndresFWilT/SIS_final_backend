@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,9 +20,10 @@ public class Centro_comercial implements Serializable {
 	
 	@Id
 	@Column(length=5)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_comercial;
 	
-	@OneToMany(mappedBy="id_comercial_res_fk")
+	@OneToMany(mappedBy="centro_comercial")
 	private Set<Restaurante> restaurantes;
 	
 	@Column(length = 2, nullable = false)

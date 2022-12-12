@@ -5,6 +5,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -18,13 +20,14 @@ public class Stock implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToOne
-	@JoinColumn(name="id_producto", nullable=false)
-	private Producto id_producto_stock_fk;
-	
 	@Id
 	@Column(length=10)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id_stock;
+	
+	@OneToOne
+	@JoinColumn(name="id_producto_stock_fk", nullable=false)
+	private Producto producto;
 	
 	@Column(length = 1024, nullable = false)
 	private String cantidad_en_stock;
@@ -36,12 +39,16 @@ public class Stock implements Serializable{
 	@DateTimeFormat(style="S-")
 	private Date fecha_restock;
 
-	public Producto getId_producto_stock_fk() {
-		return id_producto_stock_fk;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setId_producto_stock_fk(Producto id_producto_stock_fk) {
-		this.id_producto_stock_fk = id_producto_stock_fk;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getId_stock() {

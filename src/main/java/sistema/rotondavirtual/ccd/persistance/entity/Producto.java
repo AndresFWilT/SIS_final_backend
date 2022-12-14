@@ -1,7 +1,6 @@
 package sistema.rotondavirtual.ccd.persistance.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -15,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "PRODUCTO")
@@ -49,8 +47,7 @@ public class Producto implements Serializable{
 	private String nombre_producto;
 	
 	@Column(nullable = false)
-	@DateTimeFormat(style="S-")
-	private Date tiempo_preparacion;
+	private String tiempo_preparacion;
 	
 	@Column(nullable = false)
 	private int costo_producto;
@@ -115,12 +112,12 @@ public class Producto implements Serializable{
 		this.nombre_producto = nombre_producto;
 	}
 
-	public Date getTiempo_preparacion() {
+	public String getTiempo_preparacion() {
 		return tiempo_preparacion;
 	}
 
-	public void setTiempo_preparacion(Date tiempo_preparacion) {
-		this.tiempo_preparacion = tiempo_preparacion;
+	public void setTiempo_preparacion(String time) {
+		this.tiempo_preparacion = time;
 	}
 
 	public int getCosto_producto() {
